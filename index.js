@@ -47,7 +47,13 @@ async function run() {
           const filter = { _id: ObjectId(id) };
           const options = { upsert: true };
           const updateServiceDoc = {
-              $set:{updateService}
+              $set: {
+                  name: updateService.name,
+                  description: updateService.description,
+                  quantity: updateService.quantity,
+                  price: updateService.price,
+                  img:updateService.img
+              }
           }
           const result = await serviceCollection.updateOne(filter, updateServiceDoc, options);
           res.send(result);
