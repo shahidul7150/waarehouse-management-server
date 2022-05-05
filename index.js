@@ -20,8 +20,10 @@ async function run() {
   try {
     await client.connect();
     const serviceCollection = client.db("f2c-store").collection("service");
+    const myItemCollection = client.db("f2c-store").collection("myItem");
 
-    app.get("/service", async (req, res) => {
+      app.get("/service", async (req, res) => {
+        const email = req.query.email;
       const query = {};
       const cursor = serviceCollection.find(query);
       const services = await cursor.toArray();
@@ -34,7 +36,14 @@ async function run() {
           const service = await serviceCollection.findOne(query);
           res.send(service)
       })
-
+      app.get('/service', async (req, res) => {
+          const email = req.query.email;
+          console.log(email)
+          const query = {email:email};
+          const cursor = myItemCollection.find(query);
+          const added = await cursor.toArray();
+          res.send(added)
+})
       app.post('/service', async (req, res) => {
           const newItem = req.body;
           const result = await serviceCollection.insertOne(newItem);
