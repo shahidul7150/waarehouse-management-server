@@ -15,5 +15,14 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahidul7150/waarehouse-management-server.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/shahidul7150/waarehouse-management-server/issues"
+  },
+  "homepage": "https://github.com/shahidul7150/waarehouse-management-server#readme",
   "description": ""
 }
